@@ -1,0 +1,16 @@
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.9.0
+    hooks:
+      - id: ruff
+        args: [--fix]
+      - id: ruff-format
+
+  - repo: local
+    hooks:
+      - id: leak-check
+        name: Pre-push leak check (banned tokens / paths)
+        entry: python3 scripts/leak_check.py
+        language: system
+        pass_filenames: false
+        stages: [pre-commit, pre-push]
