@@ -1,29 +1,22 @@
 #!/usr/bin/env python3
 """
-Brain — Give your AI a memory. No API key required.
+AI Law Brain — Singapore — terminal front-desk.
 
-Two ways to ingest:
-  Projects:      brain mine ~/projects/my_app          (code, docs, notes)
-  Conversations: brain mine ~/chats/ --mode convos     (Claude, ChatGPT, Slack)
+This CLI is the receptionist for the Advocate & Solicitor.  Every
+substantive query is routed through the local brain (python -m
+ailawfirm_singapore ask "..."); this module only owns dispatch.
 
-Same palace. Same search. Different ingest strategies.
+Front-desk commands (reception / ask / chat / recap):
+    python3 -m ailawfirm_singapore reception
+    python3 -m ailawfirm_singapore ask "validate [2023] SGCA 42"
+    python3 -m ailawfirm_singapore chat
+    python3 -m ailawfirm_singapore recap
 
-Commands:
-    brain init <dir>                  Detect rooms from folder structure
-    brain split <dir>                 Split concatenated mega-files into per-session files
-    brain mine <dir>                  Mine project files (default)
-    brain mine <dir> --mode convos    Mine conversation exports
-    brain search "query"              Find anything, exact words
-    brain wake-up                     Show L0 + L1 wake-up context
-    brain wake-up --wing my_app       Wake-up for a specific project
-    brain status                      Show what's been filed
+Mine / search / status / wake-up / split / compress / update /
+connect-local remain available for the file-side maintenance surface.
 
-Examples:
-    brain init ~/projects/my_app
-    brain mine ~/projects/my_app
-    brain mine ~/chats/claude-sessions --mode convos
-    brain search "why did we switch to GraphQL"
-    brain search "pricing discussion" --wing my_app --room costs
+Collection-name and paths come from BrainConfig — the MCP server and
+this CLI resolve the same ChromaDB collection by default.
 """
 
 import os
@@ -208,7 +201,7 @@ def cmd_compress(args):
     # Connect to palace
     try:
         client = chromadb.PersistentClient(path=palace_path)
-        col = client.get_collection("brain_drawers")
+        col = client.get_collection(BrainConfig().collection_name)
     except Exception:
         print(f"\n  No palace found at {palace_path}")
         print("  Run: brain init <dir> then brain mine <dir>")
@@ -268,7 +261,7 @@ def cmd_compress(args):
     # Store compressed versions (unless dry-run)
     if not args.dry_run:
         try:
-            comp_col = client.get_or_create_collection("brain_compressed")
+            comp_col = client.get_or_create_collection(BrainConfig().compressed_collection_name)
             for doc_id, compressed, meta, stats in compressed_entries:
                 comp_meta = dict(meta)
                 comp_meta["compression_ratio"] = round(stats["ratio"], 1)
@@ -279,7 +272,8 @@ def cmd_compress(args):
                     metadatas=[comp_meta],
                 )
             print(
-                f"  Stored {len(compressed_entries)} compressed drawers in 'brain_compressed' collection."
+                f"  Stored {len(compressed_entries)} compressed drawers in "
+                f"'{BrainConfig().compressed_collection_name}' collection."
             )
         except Exception as e:
             print(f"  Error storing compressed drawers: {e}")

@@ -50,8 +50,29 @@ def _get_collection(create=False):
         if create:
             return client.get_or_create_collection(_config.collection_name)
         return client.get_collection(_config.collection_name)
-    except Exception:
+    except Exception as e:
+        logger.warning("Failed to open collection: %s", e)
         return None
+
+
+def _fetch_all_metadata(wing: str = None):
+    """Return the raw metadatas list (or [] on failure).
+
+    Centralises the `col.get(include=["metadatas"])` pattern used by
+    tool_status / tool_list_wings / tool_list_rooms / tool_get_taxonomy so
+    each tool can do its own tally without duplicating error handling.
+    """
+    col = _get_collection()
+    if not col:
+        return []
+    try:
+        kwargs = {"include": ["metadatas"]}
+        if wing:
+            kwargs["where"] = {"wing": wing}
+        return col.get(**kwargs).get("metadatas", []) or []
+    except Exception as e:
+        logger.warning("Failed to read collection metadata: %s", e)
+        return []
 
 
 def _no_palace():
@@ -72,15 +93,12 @@ def tool_status():
     count = col.count()
     wings = {}
     rooms = {}
-    try:
-        all_meta = col.get(include=["metadatas"])["metadatas"]
-        for m in all_meta:
-            w = m.get("wing", "unknown")
-            r = m.get("room", "unknown")
-            wings[w] = wings.get(w, 0) + 1
-            rooms[r] = rooms.get(r, 0) + 1
-    except Exception:
-        pass
+    all_meta = _fetch_all_metadata()
+    for m in all_meta:
+        w = m.get("wing", "unknown")
+        r = m.get("room", "unknown")
+        wings[w] = wings.get(w, 0) + 1
+        rooms[r] = rooms.get(r, 0) + 1
     return {
         "total_drawers": count,
         "wings": wings,
@@ -129,13 +147,9 @@ def tool_list_wings():
     if not col:
         return _no_palace()
     wings = {}
-    try:
-        all_meta = col.get(include=["metadatas"])["metadatas"]
-        for m in all_meta:
-            w = m.get("wing", "unknown")
-            wings[w] = wings.get(w, 0) + 1
-    except Exception:
-        pass
+    for m in _fetch_all_metadata():
+        w = m.get("wing", "unknown")
+        wings[w] = wings.get(w, 0) + 1
     return {"wings": wings}
 
 
@@ -144,16 +158,9 @@ def tool_list_rooms(wing: str = None):
     if not col:
         return _no_palace()
     rooms = {}
-    try:
-        kwargs = {"include": ["metadatas"]}
-        if wing:
-            kwargs["where"] = {"wing": wing}
-        all_meta = col.get(**kwargs)["metadatas"]
-        for m in all_meta:
-            r = m.get("room", "unknown")
-            rooms[r] = rooms.get(r, 0) + 1
-    except Exception:
-        pass
+    for m in _fetch_all_metadata(wing=wing):
+        r = m.get("room", "unknown")
+        rooms[r] = rooms.get(r, 0) + 1
     return {"wing": wing or "all", "rooms": rooms}
 
 
@@ -162,16 +169,12 @@ def tool_get_taxonomy():
     if not col:
         return _no_palace()
     taxonomy = {}
-    try:
-        all_meta = col.get(include=["metadatas"])["metadatas"]
-        for m in all_meta:
-            w = m.get("wing", "unknown")
-            r = m.get("room", "unknown")
-            if w not in taxonomy:
-                taxonomy[w] = {}
-            taxonomy[w][r] = taxonomy[w].get(r, 0) + 1
-    except Exception:
-        pass
+    for m in _fetch_all_metadata():
+        w = m.get("wing", "unknown")
+        r = m.get("room", "unknown")
+        if w not in taxonomy:
+            taxonomy[w] = {}
+        taxonomy[w][r] = taxonomy[w].get(r, 0) + 1
     return {"taxonomy": taxonomy}
 
 
