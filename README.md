@@ -162,7 +162,7 @@ Sample commands:
 
 **Architecture — three pieces decide your privacy posture:**
 
-**(1) Local-only state.** Your matters, drafts, audit logs, calendar entries, and configuration live in `~/.ailawfirm_singapore/`. Never uploaded by the tool. Never synced to a third-party cloud by the tool. No telemetry. No "anonymous usage statistics." The publisher operates zero infrastructure and cannot access this folder. Verifiable via `grep -ri "telemetry\|analytics\|requests.post\|urlopen" ailawfirm_singapore/` — should return only user-initiated cloud-LLM calls.
+**(1) Local-only state.** Your matters, drafts, audit logs, calendar entries, and configuration live in `~/.ailawfirm-singapore/`. Never uploaded by the tool. Never synced to a third-party cloud by the tool. No telemetry. No "anonymous usage statistics." The publisher operates zero infrastructure and cannot access this folder. Verifiable via `grep -ri "telemetry\|analytics\|requests.post\|urlopen" ailawfirm_singapore/` — should return only user-initiated cloud-LLM calls.
 
 **(2) LLM backend — you choose.** The default `connect-local` command configures Ollama + Qwen3 to run the language model on your laptop (truly nothing leaves; PDPA Sections 24 + 26 are not triggered in this configuration because no transmission occurs). If you opt into a cloud-LLM tier (DeepSeek / Claude / Gemini) for quality reasons, see the tier table above for cost + privacy trade-offs.
 
@@ -213,7 +213,7 @@ If your matter is:
 - **PDPA special-category data / health / criminal record / political opinion** → Stay in `connect-local` (Ollama + Qwen3) mode. Do not opt into any cloud-LLM tier for these matters; do not use free-tier Gemini.
 - **State secrets / classified material / under-seal court orders** → Stay in `connect-local` (Ollama + Qwen3) mode. For physically air-gapped networks where the pip-install / model-download / auto-update paths are also prohibited, await the v0.3+ signed offline-install bundle below.
 
-The firm's audit log captures every API call (timestamp, agent, prompt-summary, output-summary) at `~/.ailawfirm_singapore/audit_logs/`. Logs never leave your machine. They are your professional-conduct compliance trail.
+The firm's audit log captures every API call (timestamp, agent, prompt-summary, output-summary) at `~/.ailawfirm-singapore/audit_logs/`. Logs never leave your machine. They are your professional-conduct compliance trail.
 
 ### v0.3+ roadmap
 
@@ -224,6 +224,14 @@ The firm's audit log captures every API call (timestamp, agent, prompt-summary, 
 - **Expanded local-model surface** — Llama 3.3 70B / Qwen 2.5 72B / DeepSeek V4 Pro (open-weights via Ollama), for solicitors with larger laptops who want better-than-Qwen3-14b local reasoning.
 
 Tracked at: [drafting-agents-core issues](https://github.com/Wolfgangrush/drafting-agents-core/issues).
+
+---
+
+## Recent fixes
+
+- Unified the ChromaDB collection name across the MCP server and the CLI / search paths — drawers filed via MCP are now findable from the CLI, and vice-versa (the canonical name lives in `BrainConfig().collection_name`).
+- Removed dead code: `KnowledgeGraph.seed_from_entity_facts` (referenced a non-existent `fact_checker.py` and was never called) and a no-op `signal_categories - {"pronoun"}` line in `entity_detector.py`.
+- Consolidated two duplicate stop-word sets (`entity_detector.STOPWORDS` and `dialect._STOP_WORDS`) into a single shared module (`ailawfirm_singapore/stopwords.py`) imported by both; `mcp_server.py` now logs a warning on metadata-aggregation failures instead of swallowing them.
 
 ---
 

@@ -10,6 +10,7 @@ from pathlib import Path
 
 DEFAULT_PALACE_PATH = os.path.expanduser("~/.ailawfirm-singapore/palace")
 DEFAULT_COLLECTION_NAME = "brain_drawers"
+DEFAULT_COMPRESSED_COLLECTION_NAME = "brain_compressed"
 
 DEFAULT_TOPIC_WINGS = [
     "emotions",
@@ -101,6 +102,13 @@ class BrainConfig:
         return self._file_config.get("collection_name", DEFAULT_COLLECTION_NAME)
 
     @property
+    def compressed_collection_name(self):
+        """ChromaDB collection name for the compressed-drawer view."""
+        return self._file_config.get(
+            "compressed_collection_name", DEFAULT_COMPRESSED_COLLECTION_NAME
+        )
+
+    @property
     def people_map(self):
         """Mapping of name variants to canonical names."""
         if self._people_map_file.exists():
@@ -128,6 +136,7 @@ class BrainConfig:
             default_config = {
                 "palace_path": DEFAULT_PALACE_PATH,
                 "collection_name": DEFAULT_COLLECTION_NAME,
+                "compressed_collection_name": DEFAULT_COMPRESSED_COLLECTION_NAME,
                 "topic_wings": DEFAULT_TOPIC_WINGS,
                 "hall_keywords": DEFAULT_HALL_KEYWORDS,
             }
@@ -145,3 +154,17 @@ class BrainConfig:
         with open(self._people_map_file, "w") as f:
             json.dump(people_map, f, indent=2)
         return self._people_map_file
+
+
+# Module-level accessor: instantiate the shared config once. Other modules
+# can `from .config import get_config` and call `get_config().collection_name`
+# so the MCP server, CLI, and search paths always resolve the same name.
+_shared_config = None
+
+
+def get_config() -> BrainConfig:
+    """Return the process-wide BrainConfig (lazy-instantiated)."""
+    global _shared_config
+    if _shared_config is None:
+        _shared_config = BrainConfig()
+    return _shared_config
