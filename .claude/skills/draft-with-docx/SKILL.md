@@ -1,6 +1,6 @@
 ---
 name: draft-with-docx
-description: Pair every drafted document with a Word (.docx) file. When the advocate asks for a draft — complaint, petition, affidavit, reply, plaint, sale-deed analysis, advisory note, opinion, anything filed or sent — produce BOTH the markdown AND the .docx in the same directory. Word is what the registry accepts and what clients open. Markdown is what the firm reads and diffs. Both must exist.
+description: Pair every drafted document with a Word (.docx) file. When the advocate asks for a draft — originating claim, statement of claim, defence, supporting affidavit, written submissions, advice, anything filed or sent — produce BOTH the markdown AND the .docx in the same directory. Word is what the registry accepts and what clients open. Markdown is what the firm reads and diffs. Both must exist.
 allowed-tools: Bash, Read, Write, Edit
 ---
 
@@ -12,16 +12,10 @@ The advocate's filing reality: Singaporean courts accept Word, not markdown. The
 
 Any time the firm produces a written legal document:
 
-- Pleadings (complaint, plaint, written statement, replication, counter-claim)
-- Petitions (writ, SLP, review, curative, transfer, contempt)
-- Criminal pleadings (bail, anticipatory bail, 482 CrPC / 528 BNSS, revision, appeal)
-- Civil applications (Section 9 Arb, Section 11 Arb, Order 39 R.1-2, O.7 R.11)
-- Affidavits (verification, counter-affidavit, rejoinder)
-- Replies (to show-cause, notice, affidavit)
-- Notices (legal notice, Section 80 CPC, Section 138 NI demand)
-- Advisory notes, legal opinions, due-diligence reports
-- Sale deed analysis, title search, property reports
-- Tax forms (Form 35, Form 36, Section 263 reply, Section 148A objection)
+- Pleadings: originating claim (Rules of Court 2021; replaces the writ), statement of claim, defence, counterclaim, reply
+- Applications: originating application, summons, supporting affidavit
+- Court materials: written submissions, bundle of documents, bundle of authorities
+- Other documents: notice of appeal, statutory demand, advice/legal opinion, contract
 
 If you wrote it for the matter, it gets paired.
 

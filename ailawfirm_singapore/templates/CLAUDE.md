@@ -6,7 +6,7 @@
 
 ### 1. Every drafted document ships as .md AND .docx — paired, atomically
 
-For every legal document this firm produces — complaint, petition, affidavit, reply, plaint, notice, advisory, sale-deed analysis, opinion, tax form, ANY draft — produce BOTH a markdown file AND a Word file in the same directory, in the same tool call window.
+For every legal document this firm produces — originating claim, statement of claim, defence, supporting affidavit, written submissions, advice/opinion, ANY draft — produce BOTH a markdown file AND a Word file in the same directory, in the same tool call window.
 
 - Markdown is for the firm: search, diff, version-control, audit.
 - Word is for the registry and the client: courts accept .docx, clients open .docx.
@@ -30,7 +30,7 @@ Before publishing or sending anything to the public — LinkedIn post, website c
 
 ### 4. Citations get checked, never invented
 
-If you cite AIR / SCC / SCC OnLine / a <your-court> judgment / any case — run the `/citation` command to validate the format first. The firm does NOT invent citations. A single hallucinated authority is career-threatening (multiple Singaporean HCs have cautioned advocates).
+If you cite a Singapore authority ([2014] 3 SLR 761, [2020] SGCA n, [2020] SGHC n, or a Singapore Law Reports decision) / any case — run the `/citation` command to validate the format first. The firm does NOT invent citations. A single hallucinated authority is career-threatening (multiple Singaporean HCs have cautioned advocates).
 
 ### 5. Matter folders follow this layout
 
@@ -71,6 +71,6 @@ After updating, this `CLAUDE.md` file is NOT overwritten (it's your firm's custo
 
 Add your own rules below. They survive `ailawfirm-singapore update`.
 
-- (e.g., "Always check if the matter is in JMFC the local court — that bench requires 3 hard copies for filing")
+- (e.g., "Check the Supreme Court / State Courts registry practice directions before filing")
 - (e.g., "For sale deed analysis, ALWAYS fetch the 7/12 extract before reporting on ownership status")
 - (e.g., "Bail applications need the FIR copy attached as Annexure A by default")

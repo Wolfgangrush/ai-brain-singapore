@@ -1,4 +1,4 @@
-description = "✍️ Pair every drafted document with a Word (.docx) file. When the advocate asks for a draft — complaint, petition, affidavit, reply, plaint, sale-deed analysis, advisory note — produce BOTH the markdown AND the .docx in the same directory. Word is what the registry accepts and what clients open. Markdown is what the firm reads and diffs."
+description = "✍️ Pair every drafted document with a Word (.docx) file. When the advocate asks for a draft — originating claim, statement of claim, defence, supporting affidavit, advice — produce BOTH the markdown AND the .docx in the same directory. Word is what the registry accepts and what clients open. Markdown is what the firm reads and diffs."
 
 prompt = """
 # ✍️ Draft-With-Docx — Singapore AI Brain
@@ -14,15 +14,10 @@ You are producing a legal document for the advocate's matter. The firm's standin
 ## Step 1 — Detect the document type
 
 Identify what the advocate is asking you to draft:
-- Pleadings (complaint, plaint, written statement, replication)
-- Petitions (writ, SLP, review, curative, transfer, contempt)
-- Criminal pleadings (bail, anticipatory bail, 482 CrPC / 528 BNSS, revision, appeal)
-- Civil applications (Section 9 Arb, Section 11 Arb, Order 39 R.1-2, O.7 R.11)
-- Affidavits (verification, counter-affidavit, rejoinder)
-- Notices (legal notice, Section 80 CPC, Section 138 NI demand)
-- Advisory notes, legal opinions, due-diligence reports
-- Sale deed analysis, title search, property reports
-- Tax forms (Form 35, Form 36, Section 263 reply, Section 148A objection)
+- Pleadings: originating claim (Rules of Court 2021; replaces the writ), statement of claim, defence, counterclaim, reply
+- Applications: originating application, summons, supporting affidavit
+- Court materials: written submissions, bundle of documents, bundle of authorities
+- Other documents: notice of appeal, statutory demand, advice/legal opinion, contract
 
 ## Step 2 — Locate the matter folder
 
