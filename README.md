@@ -13,23 +13,6 @@ Visit the live site: [wolfgangrush.github.io](https://wolfgangrush.github.io)
 
 </div>
 
-
-<div align="center">
-
-<img src="docs/banner.png" width="820"/>
-
-**A local-first practice brain for Singapore lawyers.**
-
-Visit the live site: [wolfgangrush.github.io](https://wolfgangrush.github.io)
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Local-first](https://img.shields.io/badge/local--first-yes-blue.svg)](#)
-[![Built for Singapore lawyers](https://img.shields.io/badge/built_for-Singapore_lawyers-red.svg)](#)
-[![Anti-fabrication](https://img.shields.io/badge/principle-anti--fabrication-orange.svg)](#)
-
-</div>
-
-
 # 🇸🇬 AI Brain for Singapore Lawyers
 
 > **Free practice OS for every Singapore solo advocate and solicitor. Terminal-native. Local-first by default (Ollama + Qwen3 — nothing leaves your laptop). Cloud-LLM optional with the [Pseudonymisation Gateway](https://github.com/Wolfgangrush/pseudonymisation-gateway) sanitising PII before any prompt leaves the machine. Built by an Indian advocate, for the global solo bar.**
