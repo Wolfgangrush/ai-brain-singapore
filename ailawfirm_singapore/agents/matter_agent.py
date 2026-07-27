@@ -4,15 +4,14 @@ Stores matters at ~/.ailawfirm_singapore/matters.json. The module-level
 _STORE_PATH is a pathlib.Path so tests can monkeypatch it to a temp file.
 Pure stdlib; nothing leaves the machine.
 """
+
 import datetime
 import json
 import os
 import pathlib
 import re
 
-_STORE_PATH = pathlib.Path(
-    os.path.expanduser("~/.ailawfirm_singapore/matters.json")
-)
+_STORE_PATH = pathlib.Path(os.path.expanduser("~/.ailawfirm_singapore/matters.json"))
 
 
 def _load():

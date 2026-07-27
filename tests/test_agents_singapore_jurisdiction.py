@@ -106,7 +106,12 @@ class TestDraftingSingapore:
 
     def test_no_india_residue(self):
         # even Indian-flavoured requests must NOT echo Indian doc types / plugins
-        for q in ["draft a statement of claim", "draft a writ petition", "draft an SLP", "draft a bail application"]:
+        for q in [
+            "draft a statement of claim",
+            "draft a writ petition",
+            "draft an SLP",
+            "draft a bail application",
+        ]:
             assert not INDIA_RESIDUE.search(_flat(drafting_agent.handle(q))), q
 
 

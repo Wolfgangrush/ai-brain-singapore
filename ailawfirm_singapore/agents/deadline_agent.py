@@ -5,6 +5,7 @@ Keyword-classifies a claim, applies the relevant limitation period, and
 
 House convention: a year is approximated as 365 days.
 """
+
 import datetime
 import re
 
@@ -12,7 +13,7 @@ import re
 # "12 January 2020", "January 12 2020".
 _DATE_PATTERNS = [
     re.compile(r"\b(\d{1,2})[-/](\d{1,2})[-/](\d{4})\b"),  # DD-MM-YYYY or DD/MM/YYYY
-    re.compile(r"\b(\d{4})-(\d{1,2})-(\d{1,2})\b"),         # YYYY-MM-DD
+    re.compile(r"\b(\d{4})-(\d{1,2})-(\d{1,2})\b"),  # YYYY-MM-DD
     re.compile(
         r"\b(\d{1,2})\s+(January|February|March|April|May|June|"
         r"July|August|September|October|November|December)\s+(\d{4})\b",
@@ -26,9 +27,18 @@ _DATE_PATTERNS = [
 ]
 
 _MONTHS = {
-    "january": 1, "february": 2, "march": 3, "april": 4,
-    "may": 5, "june": 6, "july": 7, "august": 8,
-    "september": 9, "october": 10, "november": 11, "december": 12,
+    "january": 1,
+    "february": 2,
+    "march": 3,
+    "april": 4,
+    "may": 5,
+    "june": 6,
+    "july": 7,
+    "august": 8,
+    "september": 9,
+    "october": 10,
+    "november": 11,
+    "december": 12,
 }
 
 _NOTE = (

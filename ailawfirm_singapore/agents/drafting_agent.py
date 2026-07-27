@@ -4,6 +4,7 @@ Keyword-classifies a drafting request into a Singapore document type
 and points at the local Singapore template + the draft-with-docx skill.
 It does NOT generate the draft — it classifies + points.
 """
+
 import re
 
 
