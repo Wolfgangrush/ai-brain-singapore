@@ -5,7 +5,7 @@ Thanks for wanting to help. **AI Brain — Singapore** is open source (MIT). Con
 ## Getting started
 
 ```bash
-git clone https://github.com/Wolfgangrush/ai-law-firm-singapore.git
+git clone https://github.com/Wolfgangrush/ai-brain-singapore.git
 cd ai-law-firm-singapore
 pip install -e ".[dev]"
 ```

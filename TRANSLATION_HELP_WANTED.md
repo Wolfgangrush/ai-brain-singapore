@@ -58,7 +58,7 @@ AI Brain Singapore ships in English (the default working language of Singapore c
 
 If you spot something that needs immediate attention but can't PR it yourself:
 
-- 🐛 **File an issue** → [github.com/Wolfgangrush/ai-law-firm-singapore/issues](https://github.com/Wolfgangrush/ai-law-firm-singapore/issues)
+- 🐛 **File an issue** → [github.com/Wolfgangrush/ai-brain-singapore/issues](https://github.com/Wolfgangrush/ai-brain-singapore/issues)
 - 💬 **General questions** → start a discussion in the repo
 - 📚 **Authority verification** → [`KNOWLEDGE_PROVENANCE.md`](KNOWLEDGE_PROVENANCE.md) catalogues every authority cited
 

@@ -31,7 +31,7 @@ You need:
 ```bash
 # Clone the repo
 cd ~/Desktop
-git clone https://github.com/Wolfgangrush/ai-law-firm-singapore.git
+git clone https://github.com/Wolfgangrush/ai-brain-singapore.git
 cd ai-law-firm-singapore
 
 # Install in development mode
@@ -85,7 +85,7 @@ For special-category data (PDPA Section 26 special-category · health · crimina
 
 ## Reporting issues + contributing
 
-- 🐛 **Bug reports** → file an issue at [github.com/Wolfgangrush/ai-law-firm-singapore/issues](https://github.com/Wolfgangrush/ai-law-firm-singapore/issues)
+- 🐛 **Bug reports** → file an issue at [github.com/Wolfgangrush/ai-brain-singapore/issues](https://github.com/Wolfgangrush/ai-brain-singapore/issues)
 - 💬 **General questions** → start a discussion in the repo
 - 🌐 **Translation reviews** → [`TRANSLATION_HELP_WANTED.md`](TRANSLATION_HELP_WANTED.md)
 - 📚 **Authority verification** → [`KNOWLEDGE_PROVENANCE.md`](KNOWLEDGE_PROVENANCE.md) catalogues every authority cited
