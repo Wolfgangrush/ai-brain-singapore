@@ -89,6 +89,17 @@ class BrainConfig:
                 self._file_config = {}
 
     @property
+    def config_dir(self):
+        """Absolute path of the active config directory.
+
+        Exposed as a public read-only property so downstream modules (e.g.
+        ``brain/llm.py`` for the pseudonymisation audit log) can resolve the
+        firm's config directory without reaching into the private
+        ``_config_dir`` attribute.
+        """
+        return str(self._config_dir)
+
+    @property
     def palace_path(self):
         """Path to the memory palace data directory."""
         env_val = os.environ.get("BRAIN_PALACE_PATH") or os.environ.get("MEMPAL_PALACE_PATH")
