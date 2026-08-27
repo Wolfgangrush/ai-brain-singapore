@@ -1,6 +1,6 @@
 """Tests for ontology module — Singapore v0.1."""
 
-from ailawfirm_singapore.core.ontology import (
+from aibrain_singapore.core.ontology import (
     MatterType,
     SingaporeCourt,
     SingaporeStatute,

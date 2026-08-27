@@ -21,7 +21,7 @@ All tests must pass before a PR. Tests run without API keys or network access.
 ## Project structure
 
 ```
-ailawfirm_singapore/   ← core package (see ailawfirm_singapore/README.md for the module/agent guide)
+aibrain_singapore/   ← core package (see aibrain_singapore/README.md for the module/agent guide)
 tests/         ← test suite
 examples/      ← usage examples
 docs/          ← additional documentation

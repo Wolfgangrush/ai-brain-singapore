@@ -1,6 +1,6 @@
 """MCP server smoke test — Singapore v0.1."""
 
-from ailawfirm_singapore.mcp_server import TOOLS, handle_request
+from aibrain_singapore.mcp_server import TOOLS, handle_request
 
 
 def test_singapore_tools_registered():

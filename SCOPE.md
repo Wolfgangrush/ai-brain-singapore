@@ -3,7 +3,7 @@
 ## In scope (v0.1 must-haves)
 
 - [x] Forked from MemPalace 3.0.0 (MIT) — `_research/` preserved
-- [x] Package renamed to `ailawfirm_singapore`
+- [x] Package renamed to `aibrain_singapore`
 - [x] pyproject.toml v0.1.0 with Singapore Solo metadata
 - [x] README positioned for Singapore solo practitioners · MemPalace credited
 - [x] SCOPE.md (this file)

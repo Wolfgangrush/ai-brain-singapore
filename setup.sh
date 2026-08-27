@@ -17,7 +17,7 @@ else
 fi
 
 # Create firm config from template
-CONFIG_FILE="$HOME/.ailawfirm_singapore/config.toml"
+CONFIG_FILE="$HOME/.aibrain_singapore/config.toml"
 mkdir -p "$(dirname "$CONFIG_FILE")"
 if [ ! -f "$CONFIG_FILE" ]; then
   cp ./config.toml.template "$CONFIG_FILE"

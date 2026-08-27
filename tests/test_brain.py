@@ -1,8 +1,8 @@
 """Brain end-to-end tests — Singapore."""
 
-from ailawfirm_singapore.brain.router import think
-from ailawfirm_singapore.brain.classifier import classify
-from ailawfirm_singapore.brain.intents import Intent
+from aibrain_singapore.brain.router import think
+from aibrain_singapore.brain.classifier import classify
+from aibrain_singapore.brain.intents import Intent
 
 
 def test_citation_lookup_routes():

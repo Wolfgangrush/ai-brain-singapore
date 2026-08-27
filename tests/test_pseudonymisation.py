@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from ailawfirm_singapore.pseudonymisation import PseudonymisationGateway
+from aibrain_singapore.pseudonymisation import PseudonymisationGateway
 
 
 def test_aadhaar_redacted():

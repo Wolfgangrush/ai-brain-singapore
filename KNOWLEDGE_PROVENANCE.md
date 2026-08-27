@@ -18,7 +18,7 @@ This file maps every domain claim in the codebase to its source. The CORPUS-AS-V
 
 ## v0.1 claim ledger
 
-### Court hierarchy (in `ailawfirm_singapore/core/ontology.py` — `SingaporeCourt` enum)
+### Court hierarchy (in `aibrain_singapore/core/ontology.py` — `SingaporeCourt` enum)
 
 | Claim | Provenance |
 |---|---|

@@ -12,12 +12,12 @@ lookup, calendar, or ANY question of law) you MUST route it through the local br
 your own model knowledge:
 
 ```
-python3 -m ailawfirm_singapore ask "<the user's question, verbatim>"
+python3 -m aibrain_singapore ask "<the user's question, verbatim>"
 ```
 
 Relay the brain's answer. The brain is AI-backed and grounded on a deterministic engine; it is the authority on
 correctness. Keep "AI can be wrong — verify before relying" on every answer. On "turn it on"/"start"/"boot" run
-`python3 -m ailawfirm_singapore reception` first. Only pure non-legal chit-chat may be answered directly.
+`python3 -m aibrain_singapore reception` first. Only pure non-legal chit-chat may be answered directly.
 
 ## Enforcement by host (be accurate — do not overstate)
 

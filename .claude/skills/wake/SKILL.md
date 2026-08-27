@@ -37,9 +37,9 @@ If either pass fails, display warning before proceeding.
 ### Step 2: System state check
 ```bash
 echo "Python: $(python3 --version 2>&1)"
-echo "Package: $(pip show ailawfirm_singapore 2>&1 | head -3)"
-echo "Data dir: $(ls -la ~/.ailawfirm-singapore/ 2>&1 | head -5)"
-echo "Config: $(cat ~/.ailawfirm-singapore/config.json 2>&1 | head -10)"
+echo "Package: $(pip show aibrain_singapore 2>&1 | head -3)"
+echo "Data dir: $(ls -la ~/.aibrain-singapore/ 2>&1 | head -5)"
+echo "Config: $(cat ~/.aibrain-singapore/config.json 2>&1 | head -10)"
 ```
 
 ### Step 3: Jurisdiction context
@@ -71,8 +71,8 @@ Display the Singapore-specific legal framework:
 
 **System:**
 - Python: [version]
-- Package: ailawfirm_singapore [version]
-- Data: ~/.ailawfirm-singapore/ [status]
+- Package: aibrain_singapore [version]
+- Data: ~/.aibrain-singapore/ [status]
 
 **7 specialists online.**
 **Supreme Court + State Courts + SICC mapped.**

@@ -1,10 +1,10 @@
 """Calendar sync tests — Singapore v0.1."""
 
-from ailawfirm_singapore.mcp_tools.calendar_sync import singapore_calendar_sync
+from aibrain_singapore.mcp_tools.calendar_sync import singapore_calendar_sync
 
 
 def test_add_event_then_sync(tmp_path, monkeypatch):
-    from ailawfirm_singapore.core.calendar import publishers
+    from aibrain_singapore.core.calendar import publishers
 
     monkeypatch.setattr(publishers, "default_local_path", lambda: tmp_path / "calendar.ics")
 

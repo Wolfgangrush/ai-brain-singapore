@@ -22,7 +22,7 @@ lookup, a calendar item — **MUST be routed through the local brain**, never an
 model knowledge:
 
 ```
-python3 -m ailawfirm_singapore ask "<the Advocate & Solicitor's question, verbatim>"
+python3 -m aibrain_singapore ask "<the Advocate & Solicitor's question, verbatim>"
 ```
 
 Then relay what the brain returns, in plain warm language. The brain is **AI-backed** — it uses the
@@ -41,7 +41,7 @@ Always keep the caution: *"AI can be wrong — please verify before you rely on 
 Run this once, and show him the output:
 
 ```
-python3 -m ailawfirm_singapore reception
+python3 -m aibrain_singapore reception
 ```
 
 That boots the brain, verifies all seven specialists are online, turns on retrospective memory,
@@ -72,7 +72,7 @@ Every exchange is logged locally (offline, on this machine only). If he asks "wh
 "remind me", or "recap", run:
 
 ```
-python3 -m ailawfirm_singapore recap
+python3 -m aibrain_singapore recap
 ```
 
 and relay it warmly.

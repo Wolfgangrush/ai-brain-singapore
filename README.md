@@ -107,7 +107,7 @@ pip install git+https://github.com/Wolfgangrush/ai-brain-singapore.git
 ### Step 3 — Connect an AI brain (ONE COMMAND)
 
 ```bash
-ailawfirm-singapore connect-local
+aibrain-singapore connect-local
 ```
 
 This single command:
@@ -141,17 +141,17 @@ Three honest model options — see [MODEL_SETUP.md](MODEL_SETUP.md):
 
 **▶ Quickstart — the commands that now work:**
 ```bash
-python3 -m ailawfirm_singapore reception                 # turn it on: greeting + systems check + memory
-python3 -m ailawfirm_singapore ask "validate a case citation"
-python3 -m ailawfirm_singapore ask "which court has jurisdiction over my matter"
-python3 -m ailawfirm_singapore chat                      # interactive — type anything, it routes for you
-python3 -m ailawfirm_singapore recap                     # what you did last time
+python3 -m aibrain_singapore reception                 # turn it on: greeting + systems check + memory
+python3 -m aibrain_singapore ask "validate a case citation"
+python3 -m aibrain_singapore ask "which court has jurisdiction over my matter"
+python3 -m aibrain_singapore chat                      # interactive — type anything, it routes for you
+python3 -m aibrain_singapore recap                     # what you did last time
 ```
 Inside a host CLI (Claude / GLM / Codex) opened in this folder, just say **"turn it on"** — the receptionist greets you, Advocate & Solicitor, and routes everything through the brain.
 
 
 ```bash
-ailawfirm-singapore
+aibrain-singapore
 ```
 
 Sample commands:
@@ -171,11 +171,11 @@ Sample commands:
 
 **Architecture — three pieces decide your privacy posture:**
 
-**(1) Local-only state.** Your matters, drafts, audit logs, calendar entries, and configuration live in `~/.ailawfirm-singapore/`. Never uploaded by the tool. Never synced to a third-party cloud by the tool. No telemetry. No "anonymous usage statistics." The publisher operates zero infrastructure and cannot access this folder. Verifiable via `grep -ri "telemetry\|analytics\|requests.post\|urlopen" ailawfirm_singapore/` — should return only user-initiated cloud-LLM calls.
+**(1) Local-only state.** Your matters, drafts, audit logs, calendar entries, and configuration live in `~/.aibrain-singapore/`. Never uploaded by the tool. Never synced to a third-party cloud by the tool. No telemetry. No "anonymous usage statistics." The publisher operates zero infrastructure and cannot access this folder. Verifiable via `grep -ri "telemetry\|analytics\|requests.post\|urlopen" aibrain_singapore/` — should return only user-initiated cloud-LLM calls.
 
 **(2) LLM backend — you choose.** The default `connect-local` command configures Ollama + Qwen3 to run the language model on your laptop (truly nothing leaves; PDPA Sections 24 + 26 are not triggered in this configuration because no transmission occurs). If you opt into a cloud-LLM tier (DeepSeek / Claude / Gemini) for quality reasons, see the tier table above for cost + privacy trade-offs.
 
-**(3) Pseudonymisation Gateway — always-on for cloud mode.** When you configure a cloud-LLM provider in `~/.ailawfirm_singapore/config.json`, the internalised `PseudonymisationGateway` (source: `ailawfirm_singapore/pseudonymisation.py`) automatically substitutes real names, government IDs (NRIC · FIN · UEN · CPF · Aadhaar for Indian-diaspora matters), contact identifiers (phone · email), and case references (SGCA · SGHC · SGDC numbers) with deterministic placeholders BEFORE the prompt leaves your machine. The placeholder ↔ original map lives in memory only (never written to disk; destroyed when the gateway goes out of scope). Cloud vendors see only the abstract structure of the matter; the user sees real values restored in the response.
+**(3) Pseudonymisation Gateway — always-on for cloud mode.** When you configure a cloud-LLM provider in `~/.aibrain_singapore/config.json`, the internalised `PseudonymisationGateway` (source: `aibrain_singapore/pseudonymisation.py`) automatically substitutes real names, government IDs (NRIC · FIN · UEN · CPF · Aadhaar for Indian-diaspora matters), contact identifiers (phone · email), and case references (SGCA · SGHC · SGDC numbers) with deterministic placeholders BEFORE the prompt leaves your machine. The placeholder ↔ original map lives in memory only (never written to disk; destroyed when the gateway goes out of scope). Cloud vendors see only the abstract structure of the matter; the user sees real values restored in the response.
 
 **⚠️ PDPA Section 24 + Section 26 in cloud mode.** Gateway sanitisation supports your **Section 24** *reasonable security arrangements* duty (the data crossing the border is structurally pseudonymised — meaningful technical safeguard). But Gateway sanitisation does NOT discharge your **Section 26** *cross-border transfer* obligation, which requires either (a) the individual's consent OR (b) the recipient jurisdiction being on a comparable-protection list per PDPC guidance OR (c) contractual safeguards equivalent to the Singapore standard. Document the basis in your audit log before invoking cloud mode for client work.
 
@@ -222,7 +222,7 @@ If your matter is:
 - **PDPA special-category data / health / criminal record / political opinion** → Stay in `connect-local` (Ollama + Qwen3) mode. Do not opt into any cloud-LLM tier for these matters; do not use free-tier Gemini.
 - **State secrets / classified material / under-seal court orders** → Stay in `connect-local` (Ollama + Qwen3) mode. For physically air-gapped networks where the pip-install / model-download / auto-update paths are also prohibited, await the v0.3+ signed offline-install bundle below.
 
-The firm's audit log captures every API call (timestamp, agent, prompt-summary, output-summary) at `~/.ailawfirm-singapore/audit_logs/`. Logs never leave your machine. They are your professional-conduct compliance trail.
+The firm's audit log captures every API call (timestamp, agent, prompt-summary, output-summary) at `~/.aibrain-singapore/audit_logs/`. Logs never leave your machine. They are your professional-conduct compliance trail.
 
 ### v0.3+ roadmap
 
@@ -240,7 +240,7 @@ Tracked at: [drafting-agents-core issues](https://github.com/Wolfgangrush/drafti
 
 - Unified the ChromaDB collection name across the MCP server and the CLI / search paths — drawers filed via MCP are now findable from the CLI, and vice-versa (the canonical name lives in `BrainConfig().collection_name`).
 - Removed dead code: `KnowledgeGraph.seed_from_entity_facts` (referenced a non-existent `fact_checker.py` and was never called) and a no-op `signal_categories - {"pronoun"}` line in `entity_detector.py`.
-- Consolidated two duplicate stop-word sets (`entity_detector.STOPWORDS` and `dialect._STOP_WORDS`) into a single shared module (`ailawfirm_singapore/stopwords.py`) imported by both; `mcp_server.py` now logs a warning on metadata-aggregation failures instead of swallowing them.
+- Consolidated two duplicate stop-word sets (`entity_detector.STOPWORDS` and `dialect._STOP_WORDS`) into a single shared module (`aibrain_singapore/stopwords.py`) imported by both; `mcp_server.py` now logs a warning on metadata-aggregation failures instead of swallowing them.
 
 ---
 
@@ -253,8 +253,8 @@ Tracked at: [drafting-agents-core issues](https://github.com/Wolfgangrush/drafti
 ## 📁 Where your data lives
 
 ```
-~/.ailawfirm-singapore/              ← Mac/Linux
-C:\Users\YourName\.ailawfirm-singapore\  ← Windows
+~/.aibrain-singapore/              ← Mac/Linux
+C:\Users\YourName\.aibrain-singapore\  ← Windows
 ├── palace/                          ← all matter/client/citation memory (ChromaDB)
 ├── config.json                      ← your settings (AI provider · timezone · prefs)
 ├── calendars/                       ← generated .ics feeds for iPhone/Outlook subscribe
@@ -272,10 +272,10 @@ When a new version of AI Brain — Singapore is published, you pull it in with *
 ### Path 1 — Plain terminal
 
 ```
-ailawfirm-singapore update
+aibrain-singapore update
 ```
 
-Under the hood this runs `pip install --upgrade git+https://github.com/Wolfgangrush/ai-brain-singapore.git`. After it finishes, restart any open `ailawfirm-singapore` session so the new skills + prompts load.
+Under the hood this runs `pip install --upgrade git+https://github.com/Wolfgangrush/ai-brain-singapore.git`. After it finishes, restart any open `aibrain-singapore` session so the new skills + prompts load.
 
 ### Path 2 — Inside Claude Code
 
@@ -295,7 +295,7 @@ Type:
 /update
 ```
 
-Same outcome — Gemini calls `ailawfirm-singapore update` for you.
+Same outcome — Gemini calls `aibrain-singapore update` for you.
 
 ### When to update
 
@@ -307,7 +307,7 @@ Same outcome — Gemini calls `ailawfirm-singapore update` for you.
 
 - Your matter folders (`~/Desktop/<your-firm>/<matter>/...`)
 - Your project-root `CLAUDE.md` (your customisations always win)
-- Your `~/.ailawfirm-singapore/` config + palace data
+- Your `~/.aibrain-singapore/` config + palace data
 - Your chosen AI model setup (Ollama · DeepSeek · Claude · Gemini)
 
 Only the firm's installed Python code, skills, and template files refresh. Your practice is unaffected.
@@ -317,7 +317,7 @@ Only the firm's installed Python code, skills, and template files refresh. Your 
 If a new version updates the template `CLAUDE.md` (the firm's standing rules), your project-root `CLAUDE.md` is preserved because your customisations always win. To see what changed in the template after an update:
 
 ```
-diff CLAUDE.md "$(python3 -c 'import ailawfirm_singapore, os; print(os.path.join(os.path.dirname(ailawfirm_singapore.__file__), "templates/CLAUDE.md"))')"
+diff CLAUDE.md "$(python3 -c 'import aibrain_singapore, os; print(os.path.join(os.path.dirname(aibrain_singapore.__file__), "templates/CLAUDE.md"))')"
 ```
 
 Review the diff and merge what you want into your own `CLAUDE.md`.

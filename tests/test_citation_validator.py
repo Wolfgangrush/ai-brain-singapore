@@ -1,6 +1,6 @@
 """Tests for singapore_citation_validator MCP tool — Singapore v0.1."""
 
-from ailawfirm_singapore.mcp_tools.citation_validator import singapore_citation_validator
+from aibrain_singapore.mcp_tools.citation_validator import singapore_citation_validator
 
 
 def test_valid_slr():

@@ -1,6 +1,6 @@
 """Tests for singapore_court_lookup MCP tool — Singapore v0.1."""
 
-from ailawfirm_singapore.mcp_tools.court_lookup import singapore_court_lookup
+from aibrain_singapore.mcp_tools.court_lookup import singapore_court_lookup
 
 
 def test_lookup_court_of_appeal_exact():

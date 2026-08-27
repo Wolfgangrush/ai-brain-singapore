@@ -7,7 +7,7 @@ implements the three agents (drafting / deadline / matter) to GREEN.
 Each agent is asserted on THREE axes:
   1. SHAPE      — return-dict keys stay compatible with brain.router + brain.specialists.
   2. SG-NATIVE  — Limitation Act 1959 (NOT the 1963 Act) · ROC 2021 doc types ·
-                  ~/.ailawfirm_singapore matter store.
+                  ~/.aibrain_singapore matter store.
   3. NO RESIDUE — nothing Indian may appear in any output (CrPC/BNSS/writ/SLP/482/
                   Limitation Act 1963/indian-* skills/ailawfirm-india path).
 
@@ -21,7 +21,7 @@ import inspect
 import re
 
 
-from ailawfirm_singapore.agents import deadline_agent, drafting_agent, matter_agent
+from aibrain_singapore.agents import deadline_agent, drafting_agent, matter_agent
 
 # Any of these appearing in an OUTPUT = India residue leak = fail.
 INDIA_RESIDUE = re.compile(
@@ -119,7 +119,7 @@ class TestDraftingSingapore:
 class TestMatterSingapore:
     def test_store_path_is_singapore_not_india(self):
         src = inspect.getsource(matter_agent)
-        assert ".ailawfirm_singapore" in src, "matter store must live under ~/.ailawfirm_singapore"
+        assert ".aibrain_singapore" in src, "matter store must live under ~/.aibrain_singapore"
         assert ".ailawfirm-india" not in src and ".ailawfirm_india" not in src
 
     def test_add_then_list_roundtrip(self, tmp_path, monkeypatch):

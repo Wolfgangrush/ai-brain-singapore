@@ -26,11 +26,11 @@ The publisher (wolfgang_rush) operates **zero infrastructure** that touches your
 
 AI Brain — Singapore is **local-first** software. Specifically:
 
-**(1) The codebase contains zero telemetry.** You can verify this by grepping the source: `grep -ri "telemetry\|analytics\|tracking\|requests.post\|urlopen" ailawfirm_singapore/` will return only legitimate cloud-AI calls (which are user-initiated and routed direct to your chosen vendor, not to the publisher).
+**(1) The codebase contains zero telemetry.** You can verify this by grepping the source: `grep -ri "telemetry\|analytics\|tracking\|requests.post\|urlopen" aibrain_singapore/` will return only legitimate cloud-AI calls (which are user-initiated and routed direct to your chosen vendor, not to the publisher).
 
 **(2) The publisher operates no server.** There is no AI Brain Singapore API. There is no AI Brain Singapore cloud service. There is no AI Brain Singapore database. The publisher's only infrastructure is the GitHub repository (a US-based code hosting service) and the publisher's personal MemPalace (which holds no user data — it holds the publisher's development notes).
 
-**(3) Storage is on your laptop.** Your matter data, citation cache, calendar entries, configuration, and any other persistent state live on your local filesystem under `~/.ailawfirm-singapore/`. The publisher has no access to this folder.
+**(3) Storage is on your laptop.** Your matter data, citation cache, calendar entries, configuration, and any other persistent state live on your local filesystem under `~/.aibrain-singapore/`. The publisher has no access to this folder.
 
 **(4) Network calls are limited to:**
 - Package installation (PyPI download during `pip install`)
@@ -68,9 +68,9 @@ If you opt into cloud mode and the cloud vendor processes data outside Singapore
 
 You can independently verify zero-collection by:
 
-1. `grep -ri "telemetry\|analytics\|posthog\|mixpanel\|segment\|amplitude\|google-analytics\|datadog\|sentry" ailawfirm_singapore/` — should return zero results.
+1. `grep -ri "telemetry\|analytics\|posthog\|mixpanel\|segment\|amplitude\|google-analytics\|datadog\|sentry" aibrain_singapore/` — should return zero results.
 2. `cat requirements.txt` — should contain no analytics or telemetry libraries.
-3. Run the tool offline (`pip install` from cache · disconnect network · `ailawfirm-singapore --version`) — should work fully (cloud-AI calls will fail, but that's expected and visible).
+3. Run the tool offline (`pip install` from cache · disconnect network · `aibrain-singapore --version`) — should work fully (cloud-AI calls will fail, but that's expected and visible).
 4. Inspect network traffic during use with `nettop` (macOS) or `nethogs` (Linux) — should show traffic only to user-initiated cloud-AI endpoints if cloud mode is on.
 
 ## If this changes

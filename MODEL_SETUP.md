@@ -54,13 +54,13 @@ This guide is honest about every option. No marketing fluff. Read before you pic
 ### One-command install (NEW — local-AI bridge)
 
 ```bash
-ailawfirm-singapore connect-local
+aibrain-singapore connect-local
 ```
 
 This single command:
 1. Detects if Ollama is installed; installs it if missing (macOS via Homebrew · Linux via shell script · Windows: prompts you to download)
 2. Downloads the recommended model (Qwen3:14b for 16GB+ RAM · Qwen3:7b for 8GB RAM)
-3. Writes `~/.ailawfirm-singapore/config.json` with the right Ollama settings
+3. Writes `~/.aibrain-singapore/config.json` with the right Ollama settings
 4. Runs a smoke test to confirm local connectivity
 5. Reports ready
 
@@ -81,7 +81,7 @@ Alternative models if you have less storage:
 - `ollama pull llama3.3:8b` — 5 GB · Meta's model, decent
 - `ollama pull mistral:7b` — 4 GB · good European model
 
-Then edit `~/.ailawfirm-singapore/config.json`:
+Then edit `~/.aibrain-singapore/config.json`:
 
 ```json
 {
@@ -91,7 +91,7 @@ Then edit `~/.ailawfirm-singapore/config.json`:
 }
 ```
 
-Restart `ailawfirm-singapore`. It now uses local Ollama.
+Restart `aibrain-singapore`. It now uses local Ollama.
 
 ### Tradeoffs (honest)
 
@@ -144,10 +144,10 @@ DeepSeek is NOT acceptable for:
 ### Setup
 
 ```bash
-ailawfirm-singapore connect-cloud --provider deepseek --cloud-warning-acknowledged
+aibrain-singapore connect-cloud --provider deepseek --cloud-warning-acknowledged
 ```
 
-You will be prompted to paste your DeepSeek API key. The key is stored in `~/.ailawfirm-singapore/config.json` (file mode 0600, owner-readable only).
+You will be prompted to paste your DeepSeek API key. The key is stored in `~/.aibrain-singapore/config.json` (file mode 0600, owner-readable only).
 
 ---
 
@@ -156,7 +156,7 @@ You will be prompted to paste your DeepSeek API key. The key is stored in `~/.ai
 Best for power users who want top-tier reasoning. Privacy posture: Anthropic does not use API inputs for training (per their public policy). But queries still cross into Anthropic's USA servers — still cross-border for Singapore, still PDPA Section 26 territory.
 
 ```bash
-ailawfirm-singapore connect-cloud --provider anthropic --cloud-warning-acknowledged
+aibrain-singapore connect-cloud --provider anthropic --cloud-warning-acknowledged
 ```
 
 ---
@@ -166,7 +166,7 @@ ailawfirm-singapore connect-cloud --provider anthropic --cloud-warning-acknowled
 Best for long-PDF synthesis. Privacy posture: Google's terms vary by tier (paid Workspace tier has better data-isolation than free tier). Read the specific tier's terms before use.
 
 ```bash
-ailawfirm-singapore connect-cloud --provider gemini --cloud-warning-acknowledged
+aibrain-singapore connect-cloud --provider gemini --cloud-warning-acknowledged
 ```
 
 ---
@@ -201,7 +201,7 @@ You must type the exact phrase to proceed. This friction is intentional.
 ## Switching back to local-only
 
 ```bash
-ailawfirm-singapore connect-local
+aibrain-singapore connect-local
 ```
 
 This overwrites the cloud configuration and restores local Ollama as the active provider. Your cloud API keys are NOT deleted (you can switch back later); they are just inactive.

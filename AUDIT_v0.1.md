@@ -15,7 +15,7 @@ Every box below is checked against the actual repo state at the time of the v0.1
 
 [x] §2(b) ZERO DATA COLLECTION
     [x] No telemetry code anywhere
-        — grep over ailawfirm_singapore/*.py for telemetry/posthog/mixpanel/google-analytics/segment.io/amplitude:
+        — grep over aibrain_singapore/*.py for telemetry/posthog/mixpanel/google-analytics/segment.io/amplitude:
           only match is documentation in pseudonymisation.py referencing the playbook "no telemetry" pillar (not telemetry code)
     [x] No analytics dependency in requirements.txt
         — verified clean

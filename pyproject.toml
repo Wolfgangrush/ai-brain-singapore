@@ -3,7 +3,7 @@ requires = ["setuptools>=64"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "ailawfirm_singapore"
+name = "aibrain_singapore"
 version = "0.1.0"
 description = "AI Brain — Singapore Solo edition. Practice OS for Singapore solo advocates. Built on local memory architecture."
 readme = "README.md"
@@ -40,13 +40,13 @@ Repository = "https://github.com/Wolfgangrush/ai-brain-singapore"
 "Bug Tracker" = "https://github.com/Wolfgangrush/ai-brain-singapore/issues"
 
 [tool.setuptools.packages.find]
-include = ["ailawfirm_singapore*"]
+include = ["aibrain_singapore*"]
 
 [tool.setuptools.package-data]
-ailawfirm_singapore = ["templates/*.md", "templates/*.toml"]
+aibrain_singapore = ["templates/*.md", "templates/*.toml"]
 
 [project.scripts]
-ailawfirm-singapore = "ailawfirm_singapore:main"
+aibrain-singapore = "aibrain_singapore:main"
 
 [project.optional-dependencies]
 dev = ["pytest>=7.0", "build>=1.0", "twine>=4.0"]

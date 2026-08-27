@@ -7,9 +7,9 @@ must preserve the union of the original per-module sets.
 
 import chromadb
 
-from ailawfirm_singapore import config as _config_mod
-from ailawfirm_singapore import searcher
-from ailawfirm_singapore.stopwords import STOPWORDS
+from aibrain_singapore import config as _config_mod
+from aibrain_singapore import searcher
+from aibrain_singapore.stopwords import STOPWORDS
 
 
 def _collection_name():
